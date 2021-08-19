@@ -1,0 +1,51 @@
+Develop a dynamic website “Digital Library”. 
+The website is offering digital access to library resources (books, textbooks, workbooks). 
+It has two types of users: Librarian and Borrower (regular user). 
+Both types of users should have options to register or login into the system. 
+
+The Librarian can: 
+Insert resource into the system; 
+View the resources; 
+Search for a resource (ISBN, Title, Author, Status); 
+Change the status of the resource. 
+The Librarian should also be able to list all borrowed resources, all extended borrowings, and all available resources. 
+
+
+The Borrower can: 
+List all available resources in the system that s/he has borrowed; 
+List the resources that he/she has borrowed and is currently borrowing; 
+Search for a resource; Borrow a resource; and Extend the borrowing period (for borrowed resource). 
+When the user borrows a resource, should note the duration of the borrowing and date when the borrowing will be ceased and the cost of the borrowing. 
+When the borrower extends the borrowing period, should indicate the duration of the extension and get a new due date of the borrowings and the cost that needs to be paid. 
+
+For every user (Librarian or Borrower) 
+there should be information about: ID, Name, Surname, Phone, e-mail, and Type (librarian or borrower). 
+For every resource there should be information about: BookNo, ISBN, Title, Author, Publisher, Status, regular cost per day and extended cost per day (for extended borrowing). 
+When searching the resource (for both types of users) there should be options to search by combination of ISBN, Title, Author, or Status. 
+The user can enter only part of the searching string
+
+
+
+
+Requirements 
+
+.1. Design Requirements The website should have interfaces for: 
+- Registering/Login the users; 
+- Insert resources, - Search resources (by a combination of ISBN, Title, Author, or Status); 
+- List all resources; 
+- List all borrowed/extended/available resources; 
+- Borrow resource (with an indication for the length of the borrowing, and a notice of the date when borrowing will be ceased and overall costs); 
+- Extend borrowing (with an indication for the length of extension and a notice for the cost for the extended borrowing). 
+
+2. Functionalities 
+— All users should be able to register into the system; 
+— All users should be able to login into the system; 
+— All users should be able to logout; 
+— The Librarian should be +le to insert resource into the system; 
+— The Librarian should be able to list: all, available, borrowed, or extended resources; 
+— The Librarian should be able to change the status of the resource; 
+— The Borrower should be able to list: all available resources, all resources that he/she has borrowed or is currently borrowing; 
+— The Borrower should be able to borrow a resource with an indication for the duration of the borrowing and overall cost;
+— The Borrower should be able to extend the borrowing period with an indication for the new due date of the borrowing and the cost. 
+
+
