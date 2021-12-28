@@ -22,32 +22,49 @@ function userPlay(){
 function gameRound(computerSelection, playerSelection){
 	if (computerSelection == 'rock') {
 		if (playerSelection == "paper"){
-			return "You win! " + playerSelection + " beats " + computerSelection;
+			return "You win!"; //+ playerSelection + " beats " + computerSelection;
 		} else if (playerSelection == 'scissors'){
-			return "You Lose! " + computerSelection + " beats " + playerSelection;
+			return "You Lose!";// + computerSelection + " beats " + playerSelection;
 		} else {
 			return "It is a draw";
 		}
 	} else if (computerSelection == 'paper') {
 		if (playerSelection == "rock"){
-			return "You Lose! " + computerSelection + " beats " + playerSelection;
+			return "You Lose!"; // + computerSelection + " beats " + playerSelection;
 		} else if (playerSelection == 'scissors'){
-			return "You win! " + playerSelection + " beats " + computerSelection;
+			return "You win!" ; //+ playerSelection + " beats " + computerSelection;
 		} else {
 			return "It is a draw";
 		}
 	} else if (computerSelection == 'scissors') {
 		if (playerSelection == "rock"){
-			return "You win! " + playerSelection + " beats " + computerSelection;
+			return "You win!"; // + playerSelection + " beats " + computerSelection;
 		} else if (playerSelection == 'paper'){
-		return "You Lose! " + computerSelection + " beats " + playerSelection;
+		return "You Lose!"; // + computerSelection + " beats " + playerSelection;
 		} else {
 			return "It is a draw";
 		}
 	}
 }
 
-//console.log(gameRound(computerPlay(),userPlay()));
+function game(){
+	let computerCount =  0;
+	let playerCount  = 0;
+	for (var i = 1; i < 6; i++){
+		if (gameRound(computerPlay(), userPlay()) == "You win!"){
+			playerCount += 1;
+		} else {
+			computerCount += 1;
+		}
+	}
+	return "At the end of 5 games the computer won: " + 
+	computerCount.toString() + 
+	" games while the " + 
+	"player won: " +  playerCount.toString() + " games";
+}
+
+
+console.log(game());
 
 
 
