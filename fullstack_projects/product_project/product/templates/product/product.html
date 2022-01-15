@@ -1,0 +1,55 @@
+{% extends 'product/base.html' %}
+{% block content %}
+<div class="container">
+        <main role="main" class="pb-3">
+<h2>Products</h2>
+<p>
+    <a href="{% url 'product_create' %}">Create A New Product</a>
+</p>
+<p>
+    <form method="get" action="{% url 'product' %}">
+        {% csrf_token %}
+        <div class="form-actions no-color">
+            <p>
+                <div class="form-group">
+                 <input type="search" name="search" aria-label="Search" placeholder="Search for Product">
+                    <input type="submit" value="Search" class="btn btn-primary"> |
+                    <a href="{% url 'product' %}">Back to Product List</a>
+                </div>
+            </p>
+        </div>
+    </form>
+</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% if products %}
+        {% for product in products %}
+             <tr> 
+                <td> {{ product.Name}} </td> 
+                <td> {{ product.Price }} </td> 
+                <td> {{ product.Description}} </td> 
+                <td> 
+                    <a href="{% url 'product_edit' pk=product.pk %}">Edit</a> | 
+                    <a href="{% url 'product_detail' pk=product.pk %}">Details</a> | 
+                    <a href="{% url 'product_delete' pk=product.pk %}">Delete</a> 
+                </td>
+            </tr> 
+     </tbody>
+        {% endfor %}
+</table> 
+</main> 
+</div> 
+     {% else %}
+        <h2>No Product data in the system</h2>
+     {% endif %}
+{% endblock %}

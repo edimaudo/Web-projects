@@ -1,0 +1,38 @@
+{% extends 'product/base.html' %}
+
+{% block content %}
+<div class="container">
+        <main role="main" class="pb-3">
+<h1>Product Details</h1>
+<div>
+    <hr>
+    <dl class="row">
+        <dt class="col-sm-2">
+           Name
+        </dt>
+        <dd class="col-sm-10">
+            {{product.Name}}
+        </dd>
+        <dt class="col-sm-2">
+           Price
+        </dt>
+        <dd class="col-sm-10">
+            {{product.Price}}
+        </dd>
+        <dt class="col-sm-2">
+            Description
+        </dt>
+        <dd class="col-sm-10">
+            {{product.Description}}
+        </dd>
+            </tbody></table>
+    </dl>
+</div>
+<div>
+    <a href="{% url 'product_edit' pk=product.pk %}">Edit</a> |
+    <a href="{% url 'product' %}">Back to Products</a>
+</div>
+
+</main>
+    </div>
+{% endblock %}
