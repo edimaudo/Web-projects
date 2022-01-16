@@ -2,9 +2,11 @@
 {% block content %}
 <div class="container">
         <main role="main" class="pb-3">
-<h2>Products</h2>
+<h1>Product Information</h1>
 <p>
-    <a href="{% url 'product_create' %}">Create A New Product</a>
+    <a href="{% url 'product_create' %}">
+        <button type="button" class="btn btn-primary">Create A New Product</button>
+    </a>
 </p>
 <p>
     <form method="get" action="{% url 'product' %}">
@@ -12,9 +14,10 @@
         <div class="form-actions no-color">
             <p>
                 <div class="form-group">
-                 <input type="search" name="search" aria-label="Search" placeholder="Search for Product">
-                    <input type="submit" value="Search" class="btn btn-primary"> |
-                    <a href="{% url 'product' %}">Back to Product List</a>
+                 <input type="search" name="search" aria-label="Search" placeholder="Product Search">
+                    <input type="submit" value="Search" class="btn btn-secondary">
+                    <a href="{% url 'product' %}">
+                    <button type="button" class="btn btn-secondary">Back to Product List</button></a>
                 </div>
             </p>
         </div>
@@ -28,6 +31,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Description</th>
+            
             <th></th>
         </tr>
     </thead>
@@ -39,9 +43,15 @@
                 <td> {{ product.Price }} </td> 
                 <td> {{ product.Description}} </td> 
                 <td> 
-                    <a href="{% url 'product_edit' pk=product.pk %}">Edit</a> | 
-                    <a href="{% url 'product_detail' pk=product.pk %}">Details</a> | 
-                    <a href="{% url 'product_delete' pk=product.pk %}">Delete</a> 
+                    <a href="{% url 'product_edit' pk=product.pk %}">
+                    <button type="button" class="btn btn-secondary">Edit</button>
+                    </a>
+                    <a href="{% url 'product_detail' pk=product.pk %}">
+                       <button type="button" class="btn btn-secondary">Details</button> 
+                    </a>
+                    <a href="{% url 'product_delete' pk=product.pk %}">
+                        <button type="button" class="btn btn btn-danger">Delete</button>
+                    </a> 
                 </td>
             </tr> 
      </tbody>
