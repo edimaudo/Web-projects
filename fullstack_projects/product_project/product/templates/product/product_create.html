@@ -10,12 +10,16 @@
     <form method="post">
         {% csrf_token %}
             {{form|crispy}}
-            <br><div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary"> 
-            </div>
+            <br>
             <div class="form-group">
-                <a href="{% url 'product' %}">Back to Product List</a>
+                <input type="submit" value="Create" class="btn btn-primary"> 
+                 <a href="{% url 'product' %}">
+                    <button type="button" class="btn btn-secondary">Back to Product List</button>
+                </a>
             </div>
+            
+               
+            
     </form>
 
 </main>
