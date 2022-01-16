@@ -22,11 +22,13 @@
         </div>
     {% endfor %}
     <div class="form-group">
-        <input type="submit" value="Create" class="btn btn-primary"> 
+        <input type="submit" value="Update" class="btn btn-primary"> 
+        <a href="{% url 'product' %}">
+            <button type="button" class="btn btn-secondary">Back to Products</button>
+        </a>
     </div>
-    <div>
-        <a href="{% url 'product' %}">Back to Product</a>
-    </div>
+
+
 </form>
 </main>
 </div>
