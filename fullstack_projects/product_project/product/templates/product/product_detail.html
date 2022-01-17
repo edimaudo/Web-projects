@@ -25,7 +25,20 @@
         <dd class="col-sm-10">
             {{product.Description}}
         </dd>
-            </tbody></table>
+        <dt class="col-sm-2">
+            Product Image
+        </dt>
+        <dd class="col-sm-10">
+            {{product.image.url}}
+        </dd>
+        <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+            <div class="card h-100 p-4">
+              <img src="{{ product.image.url }}" class="card-img-top">
+              
+            </div>
+          </div>
+            </tbody>
+        </table>
     </dl>
 </div>
 <div>
