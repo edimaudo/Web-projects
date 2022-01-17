@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Database </title> 
       {% load static %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}">
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
@@ -29,27 +30,7 @@
         {% endblock %}
 
   </body>
-     <!--Pagination-->
-      <div class="container p-4">
-        <div class="pagination justify-content-center">
-            <span class="step-links">
-              {% if products.has_previous %}
-                  <a href="?page=1">&laquo; first</a>
-                  <a href="?page={{ products.previous_page_number }}">previous</a>
-              {% endif %}
 
-                <span class="current">
-                    Page {{ products.number }} of {{ products.paginator.num_pages }}
-                </span>
-
-              {% if products.has_next %}
-                  <a href="?page={{ products.next_page_number }}">next</a>
-                  <a href="?page={{ products.paginator.num_pages }}">last &raquo;</a>
-              {% endif %}
-            </span>
-            </div>
-        </div>
-      <!--end of Pagination-->
 
 
 </html>
