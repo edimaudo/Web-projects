@@ -1,0 +1,33 @@
+{% extends 'wiki/base.html' %}
+
+{% block content %}
+<div class="container">
+        <main role="main" class="pb-3">
+            
+<div class="jumbotron">
+    <h1>Wiki</h1>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <h2>This is the Wiki application</h2>
+        <p>
+            It is Simple Wiki application
+            built using Django and Bootstrap.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Wiki information</h2>
+        <p># of articles: 
+            {% if article_info.count %}
+              {{article_info.count}}
+            {% else %}
+            0
+            {% endif %}
+        </p>
+        <p><a class="btn btn-default" target="_blank" href="">To add an article please sign in</a></p>
+    </div>
+
+</div>
+        </main>
+    </div>
+{% endblock %}
