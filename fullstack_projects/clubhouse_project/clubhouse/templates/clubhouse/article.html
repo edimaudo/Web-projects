@@ -7,7 +7,9 @@
 <h2>Articles</h2>
 
 <p>
-    <a href="{% url 'article_add' %}">Create Article</a>
+    <a href="{% url 'article_add' %}">
+        <input type="submit" value="Add Article" class="btn btn-primary"> 
+    </a>
 </p>
 
 <p>
@@ -17,8 +19,10 @@
             <p>
                 <div class="form-group">
                  <input type="search" name="search" aria-label="Search" placeholder="Search for Articles">
-                    <input type="submit" value="Search" class="btn btn-primary"> |
-                    <a href="{% url 'article' %}">Back to Full List</a>
+                    <input type="submit" value="Search" class="btn btn-secondary"> 
+                    <a href="{% url 'article' %}">
+                        <input type="submit" value="Back to full list" class="btn btn-secondary"> 
+                    </a>
                 </div>
             </p>
         </div>
@@ -32,8 +36,10 @@
     <thead>
         <tr>
             
-            <th>Title</th>
-            <th>Creation date</th>
+            <th>Article</th>
+            {% if user.is_authenticated %}
+            <th>Author</th>
+            {% endif %}
             <th></th>
             
         </tr>
@@ -42,16 +48,11 @@
         {% if articles %}
         {% for article in articles %}
              <tr> 
-                 
-                <td> {{ article.title }} </td> 
-                <td> {{ article.created_on }} </td>  
+                <td><a href="{% url 'article_detail' article.slug %}">{{ article.title }}</td>
+                {% if user.is_authenticated %}
+                     <td> {{ article.author }} </td>  
+                {% endif %}
                 
-                <td> 
-                    <a href="{% url 'article_edit' article.slug %}">Edit</a> | 
-                    <a href="{% url 'article_detail' article.slug %}">Details</a> | 
-                    <a href="{% url 'article_history' article.slug %}">History</a> | 
-                    <a href="{% url 'article_delete' article.slug %}">Delete</a> 
-                </td>
             </tr> 
      </tbody>
              {% endfor %}
