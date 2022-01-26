@@ -1,0 +1,38 @@
+{% extends 'wiki/base.html' %}
+
+{% block content %}
+<div class="container">
+        <main role="main" class="pb-3">
+<h1>Article Details</h1>
+
+<div>
+    <hr>
+    <table>
+                <tbody>
+        
+    <dl class="row">
+        <dt class="col-sm-2">
+            Title
+        </dt>
+        <dd class="col-sm-10">
+            {{article.title }}
+        </dd>
+        <dt class="col-sm-2">
+            Text
+        </dt>
+        <dd class="col-sm-10">
+            {{article.text}}
+        </dd>        
+            </tbody>
+        </table>
+        
+    </dl>
+</div>
+<div>
+    <a href="{% url 'article_edit' article.slug %}">Edit</a> |
+    <a href="{% url 'article' %}">Back to List</a>
+</div>
+
+        </main>
+    </div>
+{% endblock %}

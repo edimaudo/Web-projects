@@ -1,0 +1,40 @@
+{% extends 'wiki/base.html' %}
+{% load crispy_forms_tags %} 
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container">
+    <main role="main" class="pb-3">
+<h1>Update Article</h1><hr>
+
+
+<form method="post" novalidate>
+    {% csrf_token %}
+    {% for hidden_field in form.hidden_fields %}
+        {{ hidden_field }}
+    {% endfor %}
+    {% for field in form.visible_fields %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {% render_field field class="form-control" %}
+            {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+        </div>
+    {% endfor %}
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary"> 
+    </div>
+    <div>
+        <a href="{% url 'article' %}">Back to List</a>
+    </div>
+</form>
+
+
+</main>
+</div>
+
+{% endblock %}
+
+
+
