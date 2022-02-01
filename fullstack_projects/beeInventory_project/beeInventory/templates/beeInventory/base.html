@@ -1,48 +1,27 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Clubhouse </title> 
+    <title>BeeInventory </title> 
     {% load static %}
-
     <link rel="stylesheet" href="{% static 'css/site.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap-grid.css' %}">
+    <link rel="stylesheet" href="{% static 'css/sidebar.css' %}">
     <script src="{% static 'js/bootstrap.js' %}"></script>
     <script src="{% static 'js/jquery.js' %}"></script>
-      <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
 </head>
 
+<!-- Side navigation -->
+<div class="sidenav">
+  <a href="#">Home</a>
+  <a href="#">Category</a>
+  <a href="#">Products</a>
+  <a href="#">Stock</a>
+  <a href="#">Orders</a>
+</div>
 
-<header class="mb-auto">
-    <div>
-      <h3 class="nav nav-madsthead justify-content-center">Clubhouse</h3>
-      <nav class="nav nav-madsthead justify-content-center float-md-end">
-        {% if user.is_authenticated %}
-        <a class="nav-link" href="{% url 'article' %}">Articles</a>
-          <a class="nav-link" href="/logout">Logout</a>
-          <a class="nav-link" href="#">Welcome, {{user.username}}</a>
-        {% else %}
-        <a class="nav-link" href="{% url 'login' %}">Login</a>
-      {% endif %}
-      </nav>
-    </div>
-  </header>
 
   <body>
         {% block content %}
@@ -51,6 +30,3 @@
     </body>
 
 </html>
-
-
-
