@@ -37,3 +37,4 @@ django_projects/tango/db.sqlite3
 *.sqlite3
 django_projects/tango/db.sqlite3
 *.sqlite3
+fullstack_projects/djangosteps.md
