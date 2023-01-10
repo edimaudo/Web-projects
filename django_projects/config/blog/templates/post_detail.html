@@ -2,7 +2,9 @@
 
 {% block content %}
     <div class="postry-entry">
-        <h2>{{post.title}}</h2>
-        <p>{{post.text}}</p>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.text }}</p>
     </div>
+    <p><a href="{% url 'post_edit' post.pk %}">Edit Blog Post</a></p>
+    <p><a href="{% url 'post_delete' post.pk %}">Delete Blog Post</a></p>
 {% endblock content %}
