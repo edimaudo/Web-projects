@@ -1,0 +1,81 @@
+{% extends 'goldmetrics/base.html' %}
+
+{% block content %} 
+
+<div class="container">
+    <main role="main" class="pb-3">
+   
+    <div>
+        <a href="{% url 'country_medal' %}">Back to List</a>
+    </div>
+    <div>
+        <hr>
+        <dl class="row">
+            <dt class="col-sm-2">
+                Most Summer Wins
+            </dt>
+            <dd class="col-sm-10">
+                {{summerwins.medalcount}}
+            </dd>
+            <dt class="col-sm-2">
+                Most Winter wins
+            </dt>
+            <dd class="col-sm-10">
+                {{winterwins.medalcount}}
+            </dd>
+            <dt class="col-sm-2">
+                Most wins
+            </dt>
+            <dd class="col-sm-10">
+                {{mostwins.Year}}
+            </dd>           
+            <dt class="col-sm-2">
+                Best discipline
+            </dt>
+            <dd class="col-sm-10">
+                {{bestdiscipline.Discipline}}
+            </dd> 
+            <dt class="col-sm-2">
+               Best Sport
+            </dt>
+            <dd class="col-sm-10">
+                {{bestsport.medalcount}}
+            </dd> 
+            <dt class="col-sm-2">
+                Best Event
+            </dt>
+            <dd class="col-sm-10">
+                {{bestevent.medalcount}}
+            </dd>
+            <dt class="col-sm-2">
+                number of Men Medalists
+            </dt>
+            <dd class="col-sm-10">
+                {{numermenmedalists.medalcount}}
+            </dd> 
+            
+            <dt class="col-sm-2">
+                number of Women Medalists
+            </dt>
+            <dd class="col-sm-10">
+                {{numberwomenmedalists.medalcount}}
+            </dd> 
+            <dt class="col-sm-2">
+                Most Medaled Athlete
+            </dt>
+            <dd class="col-sm-10">
+                {{mostmedaledathlete.Athlete}}
+            </dd> 
+            
+        </dl>
+    </div>
+    </main>
+</div>
+
+{% endblock %}
+
+
+
+
+
+
