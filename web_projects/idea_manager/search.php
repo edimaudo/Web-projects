@@ -14,10 +14,18 @@ $idea = new Idea($db);
  
 // get search term
 $search_term=isset($_GET['s']) ? $_GET['s'] : '';
+
+
  
 $page_title = "You searched for \"{$search_term}\"";
+
 include_once "templates/header.php";
- 
+echo "<div class='right-button-margin'>";
+    echo "<a href='index.php' class='btn btn-primary pull-right'>";
+        echo "<span></span> Back to Idea List";
+    echo "</a>";
+echo "</div>"; 
+
 // query ideas
 $stmt = $idea->search($search_term, $from_record_num, $records_per_page);
  
