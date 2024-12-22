@@ -22,8 +22,6 @@ echo "<div class='right-button-margin'>";
 echo "</div>";
 
 // set idea property values
-//$idea->name = $_POST['name'];
-//$idea->description = $_POST['description'];
 $idea->name = $idea->description = "";
 $name_err = $description_err = "";
  
