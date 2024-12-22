@@ -12,7 +12,7 @@ echo "</form>";
  
 // create idea button
 echo "<div class='right-button-margin'>";
-    echo "<a href='add.php' class='btn btn-primary pull-right'>";
+    echo "<a href='create.php' class='btn btn-primary pull-right'>";
         echo "<span class='glyphicon glyphicon-plus'></span> Add idea";
     echo "</a>";
 echo "</div>";
