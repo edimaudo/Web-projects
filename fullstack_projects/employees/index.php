@@ -1,8 +1,19 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dashboard</title>
+    <title>Employee</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -29,8 +40,18 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="mt-5 mb-3 clearfix">
+                    
+                        <p class="pull-right">Hi, <?php echo htmlspecialchars($_SESSION["username"]); ?>. Welcome to Employee Portal.</p>
+                        </br></br>
+                        <p>
+                            <a href="reset-password.php" class="btn btn-warning pull-right">Reset Your Password</a>
+                            <a href="logout.php" class="btn btn-danger ml-3 pull-right">Sign Out of Your Account</a>
+                        </p></br></br>
+                        <p>
                         <h2 class="pull-left">Employees Details</h2>
                         <a href="create.php" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Add New Employee</a>
+                        </p>        
+                        
                     </div>
                     <?php
                     // Include config file
