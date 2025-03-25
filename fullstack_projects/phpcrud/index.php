@@ -17,7 +17,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
 <div class="content">
   <h2>Home</h2>
-  <p>Welcome to the home page!</p>
+  <p>Contacts Home Page.  Feel free to view your contacts.</p>
 </div>
 
 <?=template_footer()?>
