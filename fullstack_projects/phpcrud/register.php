@@ -72,7 +72,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     }
 
-    // validate email
     
     // Check input errors before inserting in database
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($email_err)){
@@ -89,7 +88,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             // Set parameters
             $param_username = $username;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
-            
+            $param_email = $email;
+
             // Attempt to execute the prepared statement
             if($stmt->execute()){
                 // Redirect to login page
