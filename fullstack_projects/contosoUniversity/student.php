@@ -1,0 +1,52 @@
+<?php
+include('header.php');
+?>
+
+<html>
+<div class="container">
+        <main role="main" class="pb-3">
+<h2>Students</h2>
+
+<p>
+    <a href="{% url 'students_create' %}">Create New Student entry</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Student ID</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Enrollment Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <!----
+        {% if students %}
+        {% for student in students %}
+             <tr> 
+                <td> {{ student.id }} </td> 
+                <td> {{ student.student_first_name }} </td> 
+                <td> {{ student.student_last_name }} </td> 
+                <td> {{ student.student_enrollment_date }} </td>  
+                <td> 
+                    <a href="{% url 'students_edit' pk=student.pk %}">Edit</a> | 
+                    <a href="{% url 'students_detail' pk=student.pk %}">Details</a> | 
+                    <a href="{% url 'students_delete' pk=student.pk %}">Delete</a> 
+                </td>
+            </tr> 
+     </tbody>
+             {% endfor %}
+</table> 
+</main> 
+</div> 
+     {% else %}
+        <h2>No Student data currently in the system</h2>
+     {% endif %}
+     !---->
+</html>
+
+<?php
+include('footer.php');
+?>
