@@ -8,8 +8,18 @@ include('header.php');
 <h2>Students</h2>
 
 <p>
-    <a href="{% url 'students_create' %}">Create New Student entry</a>
+    <a href="student_create.php">Create New</a>
 </p>
+<form method="get" action="/Student">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" id="SearchString" name="SearchString">
+            <input type="submit" value="Search" id="SearchButton" class="btn btn-default"> |
+            <a href="/Student">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
 
 <table class="table">
     <thead>
