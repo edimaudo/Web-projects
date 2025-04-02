@@ -1,71 +1,68 @@
 <?php
 include('header.php');
+include 'functions.php';
+$pdo = pdo_connect_mysql();
+$search = "";
+
 ?>
 
 <html>
 <div class="container">
-        <main role="main" class="pb-3">
+<main role="main" class="pb-3">
 <h2>Students</h2>
-
 <p>
     <a href="student_create.php">Create New</a>
 </p>
-<form method="get" action="/Student">
+
+<form method="POST" action="">
     <div class="form-actions no-color">
         <p>
-            Find by name: <input type="text" id="SearchString" name="SearchString">
-            <input type="submit" value="Search" id="SearchButton" class="btn btn-default"> |
-            <a href="/Student">Back to Full List</a>
+            Find by name: <input type='text' name='search' value="<?php echo htmlspecialchars($search); ?>" placeholder='Enter first or last name'>
+            <input type="submit" value="Search" id="SearchButton" class="btn btn-default"> | 
+            <a href="student.php">Back to Full List</a>
         </p>
     </div>
 </form>
 
-
 <?php
-include 'functions.php';
-$pdo = pdo_connect_mysql();
-
-
-$sql = "SELECT * FROM Student";
-if($result = $pdo->query($sql)){
-    if($result->rowCount() > 0){
-        echo '<table class="table"> ';
-        echo "<thead>";
-        echo "<tr>";
-        echo "<th> Last Name </th>";
-        echo "<th> First Name </th>";
-        echo "<th> Enrollment Date </th>";
-        echo "<th></th>";
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
-        while($row = $result->fetch()){
-                                    echo "<tr>";
-                                        echo "<td>" . $row['LastName'] . "</td>";
-                                        echo "<td>" . $row['FirstName'] . "</td>";
-                                        echo "<td>" . $row['EnrollmentDate'] . "</td>";
-                                        echo "<td>";
-                                            echo '<a href="student_read.php?id='. $row['ID']   .'">Details</a> | ';
-                                            echo '<a href="student_update.php?id='. $row['ID'] .'">Edit</a> | ';
-                                            echo '<a href="student_delete.php?id='. $row['ID'] .'">Delete</a>';
-                                        echo "</td>";
-                                    echo "</tr>";
-                                }
-                                echo "</tbody>";                            
-                            echo "</table>";
-                            // Free result set
-                            unset($result);
-        } else{
-        echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+try {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search'])) {
+        $search = trim($_POST['search']) ?? '';
+        if (!empty($search)) {
+            $sql = "SELECT * FROM Student WHERE FirstName LIKE :search OR LastName LIKE :search";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(['search' => "%$search%"]);
+        } else {
+            $stmt = $pdo->query("SELECT * FROM Student");
         }
-} else{
-        echo "Oops! Something went wrong. Please try again later.";
-}
-// Close connection
-unset($pdo);
-                
-?>
+    } else {
+        $stmt = $pdo->query("SELECT * FROM Student");
+    }
 
+    if ($stmt->rowCount() > 0) {
+        echo '<table class="table">';
+        echo "<thead><tr><th>Last Name</th><th>First Name</th><th>Enrollment Date</th><th></th></tr></thead><tbody>";
+        while ($row = $stmt->fetch()) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['LastName']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['FirstName']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['EnrollmentDate']) . "</td>";
+            echo "<td>";
+            echo '<a href="student_read.php?id=' . $row['ID'] . '">Details</a> | ';
+            echo '<a href="student_update.php?id=' . $row['ID'] . '">Edit</a> | ';
+            echo '<a href="student_delete.php?id=' . $row['ID'] . '">Delete</a>';
+            echo "</td></tr>";
+        }
+        echo "</tbody></table>";
+    } else {
+        echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+    }
+} catch (PDOException $e) {
+    echo '<div class="alert alert-danger">Error: ' . htmlspecialchars($e->getMessage()) . '</div>';
+}
+
+unset($pdo);
+?>
 
 <?php
 include('footer.php');
