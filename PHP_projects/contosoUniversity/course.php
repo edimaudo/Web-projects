@@ -40,28 +40,17 @@ function getDepartmentName($pdo, $departmentId) {
 $sql = "SELECT * FROM Course";
 if($result = $pdo->query($sql)){
     if($result->rowCount() > 0){
-        echo '<table class="table"> ';
-        echo "<thead>";
-        echo "<tr>";
-        echo "<th> Number </th>";
-        echo "<th> Title </th>";
-        echo "<th> Credits </th>";
-        echo "<th> Department </th>";
-        echo "<th></th>";
-        echo "</tr>";
-        echo "</thead>";
-        echo "<tbody>";
+        echo '<table class="table"><thead><tr><th> Number </th><th> Title </th><th> Credits </th><th> Department </th><th></th></tr></thead><tbody>';
         while($row = $result->fetch()){
                                     echo "<tr>";
-                                        
-                                        echo "<td>" . $row['CourseID'] . "</td>";
-                                        echo "<td>" . $row['Title'] . "</td>";
-                                        echo "<td>" . $row['Credit'] . "</td>";
-                                        //echo "<td>" . getDepartmentName(,$pdo,$row['DepartmentID']) . "</td>";
+                                        echo "<td>" . htmlspecialchars($row['CourseID']) . "</td>";
+                                        echo "<td>" . htmlspecialchars($row['Title']) . "</td>";
+                                        echo "<td>" . htmlspecialchars($row['Credits']) . "</td>";
+                                        echo "<td>" . htmlspecialchars(getDepartmentName($pdo,$row['DepartmentID'])) . "</td>";
                                         echo "<td>";
-                                            echo '<a href="read.php?id='. $row['id'] .'" class="mr-3" title="Details" data-toggle="tooltip">|';
-                                            echo '<a href="update.php?id='. $row['id'] .'" class="mr-3" title="Edit" data-toggle="tooltip"></a>|';
-                                            echo '<a href="delete.php?id='. $row['id'] .'" title="Delete" data-toggle="tooltip"></a>';
+                                            echo '<a href="course_read.php?id='. $row['CourseID'] .'"">Read</a> | ';
+                                            echo '<a href="course_update.php?id='. $row['CourseID'] .'"">Edit</a> | ';
+                                            echo '<a href="course_delete.php?id='. $row['CourseID'] .'"">Delete</a>';
                                         echo "</td>";
                                     echo "</tr>";
                                 }
