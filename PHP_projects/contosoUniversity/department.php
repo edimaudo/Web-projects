@@ -18,7 +18,6 @@ include('header.php');
             <th>Budget</th>
             <th>Start Date</th>
             <th>Instructors</th>
-            <th>Courses</th>
         </tr>
     </thead>
     <tbody>
