@@ -13,30 +13,43 @@ include('header.php');
             <th>Student enrollment Count</th>
         </tr>
     </thead>
-    <tbody>
-        <!---
-        {% if students %}
-            {% for student in students %}
-             <tr> 
-                <td> {{ student.student_enrollment_date }} </td> 
-                <td>{{ student.count }}</td>
-                
-            </tr>
-        !--->
-    </tbody>
-    <!---
-        {% endfor %}
-    !--->
-</table>
 
+<?php
+include 'functions.php';
+$pdo = pdo_connect_mysql();
+
+
+$sql = "SELECT EnrollmentDate, Count(*) as Students FROM Student group by EnrollmentDate";
+
+if($result = $pdo->query($sql)){
+    
+    if($result->rowCount() > 0){
+          echo '<tbody>';
+          while($row = $result->fetch()){
+                                    echo "<tr>";
+                                        echo "<td>" . $row['EnrollmentDate'] . "</td>";
+                                        echo "<td>" . $row['Students'] . "</td>";
+                                    echo "</tr>";
+                                }
+                                echo "</tbody>";                            
+                            echo "</table>";
+                            // Free result set
+                            unset($result);
+        } else {
+        echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
+        }
+         echo '</tbody>';
+} else {
+        echo "Oops! Something went wrong. Please try again later.";
+}
+// Close connection
+unset($pdo);
+
+?>
+
+</table>
 </main>
 </div>
-<!---
-     {% else %}
-        <h2>No Calculations in system </h2>
-     {% endif %}
-{% endblock %}
-!--->
 </html>
 
 <?php
