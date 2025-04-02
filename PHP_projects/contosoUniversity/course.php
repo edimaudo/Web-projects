@@ -57,7 +57,7 @@ if($result = $pdo->query($sql)){
                                         echo "<td>" . $row['CourseID'] . "</td>";
                                         echo "<td>" . $row['Title'] . "</td>";
                                         echo "<td>" . $row['Credit'] . "</td>";
-                                        echo "<td>" . getDepartmentName(,$pdo,$row['DepartmentID']) . "</td>";
+                                        //echo "<td>" . getDepartmentName(,$pdo,$row['DepartmentID']) . "</td>";
                                         echo "<td>";
                                             echo '<a href="read.php?id='. $row['id'] .'" class="mr-3" title="Details" data-toggle="tooltip">|';
                                             echo '<a href="update.php?id='. $row['id'] .'" class="mr-3" title="Edit" data-toggle="tooltip"></a>|';
