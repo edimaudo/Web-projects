@@ -21,31 +21,7 @@ include('header.php');
         </tr>
     </thead>
     <tbody>
-        <!-----
-     {% if departments %}
-        {% for department in departments %}
-             <tr> 
-                <td> {{ department_name }} </td> 
-                <td> {{ department_budget }} </td> 
-                <td> {{ department_start_date }} </td> 
-                <td>  </td> 
-                <td>  </td> 
-                <td> 
-                    <a href="">Edit</a> | 
-                    <a href="">Details</a> | 
-                    <a href="">Delete</a> 
-                </td>
-            </tr> 
-            </tbody>
-        </table> 
-        </main> 
-        </div> 
 
-        {% endfor %}
-     {% else %}
-        <h2>No Departments currently in the system</h2>
-     {% endif %}
-      !----->
     </tbody>
 </table>
 
