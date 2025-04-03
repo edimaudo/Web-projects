@@ -65,20 +65,20 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             Last Name
         </dt>
         <dd class="col-sm-10">
-            <?php echo $row["LastName"]; ?>
+            <?php echo htmlspecialchars($row["LastName"]); ?>
             
         </dd>
         <dt class="col-sm-2">
             First Name
         </dt>
         <dd class="col-sm-10">
-            <?php echo $row["FirstName"]; ?>
+            <?php echo htmlspecialchars($row["FirstName"]); ?>
         </dd>
         <dt class="col-sm-2">
             Enrollment Date
         </dt>
         <dd class="col-sm-10">
-            <?php echo $row["EnrollmentDate"]; ?>
+            <?php echo htmlspecialchars($row["EnrollmentDate"]); ?>
         </dd>
         
             </tbody></table>
@@ -86,7 +86,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     </dl>
 </div>
 <div>
-    <a href="student_read.php?id='. $row['ID']   .'">Edit</a> |
+    <a href="student_update.php?id='. $row['ID']   .'">Edit</a> |
     <a href="student.php">Back to List</a>
 </div>
 
