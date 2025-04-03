@@ -29,17 +29,6 @@ include 'functions.php';
 $pdo = pdo_connect_mysql();
 
 
-function getDepartmentName($pdo, $departmentId) {
-    $sql = "SELECT Name FROM Department WHERE DepartmentID = :departmentId";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':departmentId', $departmentId, PDO::PARAM_INT);
-    $stmt->execute();
-    
-    $department = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $department ? $department['Name'] : null;
-}
-
-
 $selectedDepartment = isset($_POST['SelectedDepartment']) ? $_POST['SelectedDepartment'] : '';
 $sql = "SELECT * FROM Course";
 
