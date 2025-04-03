@@ -9,17 +9,19 @@ include('header.php');
 
 <p> <a href="course_create.php">Create New</a> </p> 
 
-<form action="" method="post">    <p>
-Select Department: <select id="SelectedDepartment" name="SelectedDepartment">
-<option value="">All</option>
-<option value="4">Economics</option>
-<option value="3">Engineering</option>
-<option value="1">English</option>
-<option value="2">Mathematics</option>
-</select>
-<input type="submit" value="Filter">
+<form action="" method="post">    
+    <p>
+        Select Department: 
+        <select id="SelectedDepartment" name="SelectedDepartment">
+            <option value="">All</option>
+            <option value="4" <?php if(isset($_POST['SelectedDepartment']) && $_POST['SelectedDepartment'] == '4') echo 'selected'; ?>>Economics</option>
+            <option value="3" <?php if(isset($_POST['SelectedDepartment']) && $_POST['SelectedDepartment'] == '3') echo 'selected'; ?>>Engineering</option>
+            <option value="1" <?php if(isset($_POST['SelectedDepartment']) && $_POST['SelectedDepartment'] == '1') echo 'selected'; ?>>English</option>
+            <option value="2" <?php if(isset($_POST['SelectedDepartment']) && $_POST['SelectedDepartment'] == '2') echo 'selected'; ?>>Mathematics</option>
+        </select>
+        <input type="submit" value="Filter">
     </p>
-<input name="_" type="hidden" value="">
+    <input name="_" type="hidden" value="">
 </form>
 
 <?php
@@ -37,11 +39,25 @@ function getDepartmentName($pdo, $departmentId) {
     return $department ? $department['Name'] : null;
 }
 
+
+$selectedDepartment = isset($_POST['SelectedDepartment']) ? $_POST['SelectedDepartment'] : '';
 $sql = "SELECT * FROM Course";
-if($result = $pdo->query($sql)){
-    if($result->rowCount() > 0){
+
+if (!empty($selectedDepartment)) {
+    $sql .= " WHERE DepartmentID = :departmentId";
+}
+
+$stmt = $pdo->prepare($sql);
+
+if (!empty($selectedDepartment)) {
+    $stmt->bindParam(':departmentId', $selectedDepartment, PDO::PARAM_INT);
+}
+$stmt->execute();
+
+
+    if($stmt->rowCount() > 0){
         echo '<table class="table"><thead><tr><th> Number </th><th> Title </th><th> Credits </th><th> Department </th><th></th></tr></thead><tbody>';
-        while($row = $result->fetch()){
+        while($row = $stmt->fetch()){
                                     echo "<tr>";
                                         echo "<td>" . htmlspecialchars($row['CourseID']) . "</td>";
                                         echo "<td>" . htmlspecialchars($row['Title']) . "</td>";
@@ -61,9 +77,6 @@ if($result = $pdo->query($sql)){
                         } else{
                             echo '<div class="alert alert-danger"><em>No records were found.</em></div>';
                         }
-                    } else{
-                        echo "Oops! Something went wrong. Please try again later.";
-                    }
                     
                     // Close connection
                     unset($pdo);
