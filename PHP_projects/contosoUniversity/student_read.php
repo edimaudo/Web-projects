@@ -80,6 +80,8 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
         <dd class="col-sm-10">
             <?php echo htmlspecialchars($row["EnrollmentDate"]); ?>
         </dd>
+
+        
         
             </tbody></table>
         </dd>
