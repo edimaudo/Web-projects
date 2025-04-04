@@ -13,4 +13,27 @@ function pdo_connect_mysql() {
         exit('Failed to connect to database!');
     }
 }
+
+function getDepartmentName($pdo, $departmentId) {
+    $sql = "SELECT Name FROM Department WHERE DepartmentID = :departmentId";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':departmentId', $departmentId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    $department = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $department ? $department['Name'] : null;
+}
+
+function getInstructorName($pdo, $instructorId) {
+    $sql = "SELECT CONCAT(LastName,', ',FirstMidName) as Name  FROM Instructor WHERE ID = :instructorId";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':instructorId', $instructorId, PDO::PARAM_INT);
+    $stmt->execute();
+    
+    $instructor = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $instructor ? $instructor['Name'] : null;
+}
+
 ?>
+
+
