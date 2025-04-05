@@ -38,7 +38,7 @@ include('header.php');
 </div>
 
 <div>
-    <a href="{% url 'courses' %}">Back to List</a>
+    <a href="course.php">Back to List</a>
 </div>
 
 
