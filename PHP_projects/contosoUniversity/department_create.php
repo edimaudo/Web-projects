@@ -2,8 +2,8 @@
 include 'functions.php';
 $pdo = pdo_connect_mysql();
 
-// Fetch departments from the database
-$stmt = $pdo->prepare("SELECT ID, CONCAT(LastName, ', ' , FirstName) as Name FROM Instructor ORDER BY Name ASC");
+// Fetch instructors from the database
+$stmt = $pdo->prepare("SELECT ID, CONCAT(LastName, ', ' , FirstMidName) as Name FROM Instructor ORDER BY Name ASC");
 $stmt->execute();
 $instructors = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
