@@ -10,7 +10,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     $pdo = pdo_connect_mysql();
     
     // Prepare a select statement
-    $sql = "SELECT * FROM Student WHERE id = :id";
+    $sql = "SELECT * FROM Student WHERE ID = :id";
     
     if($stmt = $pdo->prepare($sql)){
         // Bind variables to the prepared statement as parameters
