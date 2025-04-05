@@ -53,7 +53,7 @@ $stmt->execute();
                                         echo "<td>" . htmlspecialchars($row['Credits']) . "</td>";
                                         echo "<td>" . htmlspecialchars(getDepartmentName($pdo,$row['DepartmentID'])) . "</td>";
                                         echo "<td>";
-                                            echo '<a href="course_read.php?id='. $row['CourseID'] .'"">Read</a> | ';
+                                            echo '<a href="course_read.php?id='. $row['CourseID'] .'"">Details</a> | ';
                                             echo '<a href="course_update.php?id='. $row['CourseID'] .'"">Edit</a> | ';
                                             echo '<a href="course_delete.php?id='. $row['CourseID'] .'"">Delete</a>';
                                         echo "</td>";
