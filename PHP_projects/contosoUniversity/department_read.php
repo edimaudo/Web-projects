@@ -27,6 +27,7 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
                 $row = $stmt->fetch(PDO::FETCH_ASSOC); 
                 
                 // Retrieve individual field value
+                $dept = $row["DepartmentID"];
                 $name = $row["Name"];
                 $budget = $row["Budget"];
                 $start_date = date("Y-m-d",strtotime($row["StartDate"]));
